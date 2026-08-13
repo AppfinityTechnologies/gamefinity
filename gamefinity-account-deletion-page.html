@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamefinity — Account Deletion</title>
+<meta name="description" content="Request deletion of your Gamefinity account and associated data.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Gamefinity — Account Deletion">
+<meta property="og:description" content="Request deletion of your Gamefinity account and associated data.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Gamefinity — Account Deletion
+   Design tokens
+   ============================================================ */
+:root {
+  /* Color — cool ink background, warm ember accent for contrast & energy */
+  --bg: #0A0B10;
+  --bg-elevated: #10121A;
+  --surface: #15171F;
+  --surface-hover: #1B1E28;
+  --border: #23262F;
+  --border-strong: #30333F;
+
+  --text-primary: #F1F2F6;
+  --text-secondary: #A7ABB9;
+  --text-muted: #6D7180;
+
+  --accent: #FF6B4D;
+  --accent-strong: #FF8266;
+  --accent-on-accent: #14100D;
+  --accent-bg: rgba(255, 107, 77, 0.12);
+  --accent-border: rgba(255, 107, 77, 0.35);
+
+  --warn: #E8B84B;
+  --warn-bg: rgba(232, 184, 75, 0.09);
+  --warn-border: rgba(232, 184, 75, 0.3);
+
+  /* Type */
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Layout */
+  --content-width: 720px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --space-section: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--accent);
+  color: var(--accent-on-accent);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: top 0.15s ease;
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Background depth: faint radial glow + hairline grid, subtle */
+body {
+  background-image:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(255, 107, 77, 0.14), transparent 65%),
+    linear-gradient(var(--bg), var(--bg));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(10, 12, 19, 0.85);
+  backdrop-filter: saturate(140%) blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 60px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark { color: var(--accent-strong); display: flex; }
+
+.header-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}
+
+.hero-inner { max-width: 620px; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 5.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.hero-lede {
+  margin-top: 1.1rem;
+  color: var(--text-secondary);
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  max-width: 46ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+  min-height: 48px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-on-accent);
+  margin-top: 1.9rem;
+}
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-icon { flex-shrink: 0; }
+
+/* ============================================================
+   Page body / sections
+   ============================================================ */
+.page-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.55rem);
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.section-lede {
+  margin-top: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  max-width: 56ch;
+}
+
+/* ============================================================
+   Notice card (Before you delete)
+   ============================================================ */
+.notice-card {
+  display: flex;
+  gap: 0.9rem;
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-left: 3px solid var(--warn);
+  border-radius: var(--radius-lg);
+  padding: 1.3rem 1.4rem;
+}
+
+.notice-icon {
+  color: var(--warn);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.notice-content h2 { margin-bottom: 0.55rem; }
+
+.notice-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.notice-content p + p { margin-top: 0.6rem; }
+
+.notice-strong {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+/* ============================================================
+   Data grid
+   ============================================================ */
+.data-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.data-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.2rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.data-card:hover { border-color: var(--border-strong); background: var(--surface-hover); }
+
+.data-icon {
+  display: inline-flex;
+  color: var(--accent-strong);
+  background: var(--accent-bg);
+  border-radius: 8px;
+  padding: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.data-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.data-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.retention-note {
+  margin-top: 1.3rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.1rem;
+}
+
+/* ============================================================
+   Request deletion
+   ============================================================ */
+.request-card {
+  margin-top: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+}
+
+.request-instructions {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+}
+.request-instructions strong { color: var(--text-primary); }
+
+.placeholder-warning {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--warn);
+  background: var(--warn-bg);
+  border: 1px dashed var(--warn-border);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+.placeholder-warning code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.request-card .btn-primary { margin-top: 1.3rem; }
+
+.request-meta {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+.request-meta a { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 2px; }
+.request-meta .mono { font-family: var(--font-mono); }
+
+.placeholder-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--warn);
+  border: 1px solid var(--warn-border);
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Steps
+   ============================================================ */
+.steps {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  gap: 1.1rem;
+  position: relative;
+  padding-bottom: 1.6rem;
+}
+.step:last-child { padding-bottom: 0; }
+
+.step::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 42px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--border);
+}
+.step:last-child::before { display: none; }
+
+.step-index {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-strong);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.step-content h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-top: 0.4rem;
+}
+
+.step-content p {
+  margin-top: 0.3rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+/* ============================================================
+   Privacy
+   ============================================================ */
+.privacy-section p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.link-arrow:hover { border-color: var(--accent-strong); }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 2.5rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.footer-brand .brand-mark { color: var(--text-muted); }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.footer-links a:hover { color: var(--text-secondary); }
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (min-width: 640px) {
+  .data-grid { grid-template-columns: 1fr 1fr; }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+@media (min-width: 860px) {
+  .data-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* Small phones: tighten padding */
+@media (max-width: 360px) {
+  .container { padding: 0 1.1rem; }
+  .btn { padding: 0.8rem 1.15rem; font-size: 0.93rem; }
+}
+
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#delete-section">Skip to account deletion request</a>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2L29 9V23L16 30L3 23V9L16 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M16 2V16M16 16L29 9M16 16L3 9M16 16V30" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+        </svg>
+      </span>
+      <span class="brand-name">Gamefinity</span>
+    </div>
+    <span class="header-tag">Account Deletion</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Account &amp; data controls</p>
+      <h1>Delete your Gamefinity account</h1>
+      <p class="hero-lede">
+        If you no longer want to use Gamefinity, you can request deletion of your
+        account and associated personal data.
+      </p>
+      <a href="#delete-section" class="btn btn-primary" data-scroll>
+        Request account deletion
+        <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M8 3v10M8 13l4-4M8 13L4 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <div class="container page-body">
+
+    <!-- ============ BEFORE YOU DELETE ============ -->
+    <section class="section" aria-labelledby="before-heading">
+      <div class="notice-card">
+        <div class="notice-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2L18.5 17H1.5L10 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M10 8V11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="10" cy="14.2" r="0.9" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="notice-content">
+          <h2 id="before-heading">Before you delete</h2>
+          <p>
+            Deleting your account may permanently remove your game progress, account
+            information, profile information, cloud-saved data, achievements, and
+            other data associated with your account.
+          </p>
+          <p class="notice-strong">
+            Deletion may be permanent and cannot necessarily be undone. Please make
+            sure you no longer need this data before continuing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT DATA IS DELETED ============ -->
+    <section class="section" aria-labelledby="data-heading">
+      <h2 id="data-heading">What data is deleted</h2>
+      <p class="section-lede">
+        Requesting account deletion may result in removal of the following categories
+        of data associated with your account.
+      </p>
+
+      <ul class="data-grid">
+        <li class="data-card">
+          <span class="data-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 7h14" stroke="currentColor" stroke-width="1.4"/></svg>
+          </span>
+          <h3>Account information</h3>
+          <p>Your Gamefinity account record and related account details.</p>
+        </li>
+        <li class="data-card">
+          <span class="data-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l6 2.5v4c0 4-2.7 6.6-6 7.5-3.3-.9-6-3.5-6-7.5v-4L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Authentication &amp; identifiers</h3>
+          <p>Sign-in credentials and identifiers used to authenticate your account.</p>
+        </li>
+        <li class="data-card">
+          <span class="data-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.4"/></svg>
+          </span>
+          <h3>Profile information</h3>
+          <p>Display name, avatar, and other profile details you've set.</p>
+        </li>
+        <li class="data-card">
+          <span class="data-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l1.8 4 4.2.5-3 3 .8 4.3L9 11.7 5.2 13.8 6 9.5l-3-3 4.2-.5L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Game progress</h3>
+          <p>Saved progress, achievements, and gameplay history tied to your account.</p>
+        </li>
+        <li class="data-card">
+          <span class="data-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 12a3.5 3.5 0 010-7 4.5 4.5 0 018.6-1.2A3.5 3.5 0 0113 12H5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Cloud-saved data</h3>
+          <p>Data synced or backed up to your account via cloud save.</p>
+        </li>
+      </ul>
+
+      <p class="retention-note">
+        Certain information may be retained when required by law, fraud prevention,
+        security, financial records, or other legitimate legal obligations.
+      </p>
+    </section>
+
+    <!-- ============ REQUEST DELETION ============ -->
+    <section id="delete-section" class="section delete-section" aria-labelledby="delete-heading">
+      <h2 id="delete-heading">Request account deletion</h2>
+      <p class="section-lede">
+        To request deletion of your Gamefinity account, follow the instructions below.
+        This page does not process deletions automatically — requests are handled by
+        Gamefinity Support.
+      </p>
+
+      <div class="request-card">
+        <p class="request-instructions">
+          Contact Gamefinity Support using the button below and include the
+          <strong>email address associated with your Gamefinity account</strong>
+          so we can locate and verify it.
+        </p>
+
+        <a
+          class="btn btn-primary"
+          id="contact-support-btn"
+          href="mailto:appfinitytechnologies@gmail.com?subject=Gamefinity%20Account%20Deletion%20Request&body=Please%20delete%20my%20Gamefinity%20account.%0A%0AAccount%20email%3A%20"
+        >
+          Contact Gamefinity Support
+        </a>
+
+        <p class="request-meta">
+          Email: <a href="mailto:appfinitytechnologies@gmail.com">appfinitytechnologies@gmail.com</a>
+          &nbsp;·&nbsp; Subject: <span class="mono">Gamefinity Account Deletion Request</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ DELETION PROCESS ============ -->
+    <section class="section" aria-labelledby="process-heading">
+      <h2 id="process-heading">Deletion process</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-index" aria-hidden="true">01</span>
+          <div class="step-content">
+            <h3>Submit your request</h3>
+            <p>Send a deletion request to Gamefinity Support with your account email.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-index" aria-hidden="true">02</span>
+          <div class="step-content">
+            <h3>Request is verified</h3>
+            <p>Gamefinity verifies the request when necessary to confirm account ownership.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-index" aria-hidden="true">03</span>
+          <div class="step-content">
+            <h3>Account &amp; data removed</h3>
+            <p>Your account and eligible associated data are deleted according to the applicable deletion process.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ PRIVACY POLICY ============ -->
+    <section class="section privacy-section" aria-labelledby="privacy-heading">
+      <h2 id="privacy-heading">Privacy policy</h2>
+      <p>
+        For details on how Gamefinity handles personal data, see the Privacy Policy.
+      </p>
+      <a href="https://appfinitytechnologies.github.io/gamefinity/PrivacyPolicy" class="link-arrow">
+        View Privacy Policy
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10l6-6M10 4H5M10 4v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2L29 9V23L16 30L3 23V9L16 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Gamefinity
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#delete-section">Account Deletion</a>
+      <a href="https://appfinitytechnologies.github.io/gamefinity/PrivacyPolicy">Privacy Policy</a>
+      <a href="mailto:appfinitytechnologies@gmail.com">Contact</a>
+    </nav>
+    <p class="footer-copy">© <span id="year"></span> Gamefinity. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/**
+ * Gamefinity — Account Deletion page
+ * Vanilla JS only. No data collection, no storage, no fake deletion logic.
+ */
+(function () {
+  "use strict";
+
+  /* Smooth scroll for in-page anchor links */
+  document.querySelectorAll('a[data-scroll], a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+
+      var target = document.querySelector(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // Move focus for keyboard/screen-reader users after the scroll settles.
+      window.setTimeout(function () {
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      }, 350);
+    });
+  });
+
+  /* Simple confirmation before opening the email client */
+  var contactBtn = document.getElementById("contact-support-btn");
+  if (contactBtn) {
+    contactBtn.addEventListener("click", function (event) {
+      var confirmed = window.confirm(
+        "This will open your email app to send an account deletion request to Gamefinity Support. Continue?"
+      );
+      if (!confirmed) {
+        event.preventDefault();
+      }
+    });
+  }
+
+  /* Footer year */
+  var yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
+})();
+
+</script>
+</body>
+</html>
