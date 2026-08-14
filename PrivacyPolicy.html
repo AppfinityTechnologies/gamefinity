@@ -1,646 +1,1461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Privacy Policy – Gamefinity</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamefinity — Privacy Policy</title>
+<meta name="description" content="How Gamefinity collects, uses, shares, and protects information, and how to exercise your privacy rights.">
+
+<meta property="og:title" content="Gamefinity — Privacy Policy">
+<meta property="og:description" content="How Gamefinity collects, uses, shares, and protects information, and how to exercise your privacy rights.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============================================================
+   Gamefinity — Account Deletion
+   Design tokens
+   ============================================================ */
+:root {
+  /* Color — cool ink background, warm ember accent for contrast & energy */
+  --bg: #0A0B10;
+  --bg-elevated: #10121A;
+  --surface: #15171F;
+  --surface-hover: #1B1E28;
+  --border: #23262F;
+  --border-strong: #30333F;
 
-  :root {
-    --blue:       #2563eb;
-    --blue-dark:  #1d4ed8;
-    --blue-light: #eff6ff;
-    --blue-mid:   #dbeafe;
-    --text:       #1e293b;
-    --muted:      #64748b;
-    --border:     #e2e8f0;
-    --white:      #ffffff;
-    --bg:         #f1f5f9;
-    --radius:     14px;
-    --shadow:     0 2px 8px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
-  }
+  --text-primary: #F1F2F6;
+  --text-secondary: #A7ABB9;
+  --text-muted: #6D7180;
 
-  html { scroll-behavior: smooth; }
+  --accent: #FF6B4D;
+  --accent-strong: #FF8266;
+  --accent-on-accent: #14100D;
+  --accent-bg: rgba(255, 107, 77, 0.12);
+  --accent-border: rgba(255, 107, 77, 0.35);
 
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-    font-size: 15px;
-    padding: 32px 16px 64px;
-  }
+  --warn: #E8B84B;
+  --warn-bg: rgba(232, 184, 75, 0.09);
+  --warn-border: rgba(232, 184, 75, 0.3);
 
-  /* ── Wrapper ── */
-  .wrap {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  /* Type */
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* ── Header ── */
-  .site-header {
-    background: linear-gradient(135deg, #1e40af 0%, #2563eb 55%, #3b82f6 100%);
-    border-radius: 20px;
-    padding: 52px 40px 44px;
-    text-align: center;
-    color: var(--white);
-    margin-bottom: 28px;
-    position: relative;
-    overflow: hidden;
-  }
+  /* Layout */
+  --content-width: 720px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --space-section: clamp(2.5rem, 6vw, 4.5rem);
+}
 
-  .site-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-    pointer-events: none;
-  }
+/* ============================================================
+   Reset
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 
-  .header-icon {
-    width: 68px;
-    height: 68px;
-    background: rgba(255,255,255,.18);
-    border: 2px solid rgba(255,255,255,.3);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    margin: 0 auto 20px;
-    position: relative;
-  }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
 
-  .site-header h1 {
-    font-size: clamp(26px, 4vw, 36px);
-    font-weight: 800;
-    letter-spacing: -.5px;
-    margin-bottom: 8px;
-    position: relative;
-  }
+img, svg { display: block; max-width: 100%; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
 
-  .site-header .tagline {
-    font-size: 15px;
-    opacity: .78;
-    position: relative;
-  }
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
 
-  .updated-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 22px;
-    background: rgba(255,255,255,.15);
-    border: 1px solid rgba(255,255,255,.25);
-    border-radius: 30px;
-    padding: 6px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    position: relative;
-  }
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--accent);
+  color: var(--accent-on-accent);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: top 0.15s ease;
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
 
-  /* ── Cards ── */
-  .card {
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 32px 32px 28px;
-    margin-bottom: 20px;
-  }
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
-  .card-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
+/* Background depth: faint radial glow + hairline grid, subtle */
+body {
+  background-image:
+    radial-gradient(ellipse 900px 500px at 50% -10%, rgba(255, 107, 77, 0.14), transparent 65%),
+    linear-gradient(var(--bg), var(--bg));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
-  .card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: var(--blue-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 19px;
-    flex-shrink: 0;
-  }
+/* ============================================================
+   Header
+   ============================================================ */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(10, 12, 19, 0.85);
+  backdrop-filter: saturate(140%) blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-  .card-title h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -.2px;
-  }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 60px;
+}
 
-  .card p {
-    color: var(--text);
-    margin-bottom: 13px;
-  }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
 
-  .card p:last-child { margin-bottom: 0; }
+.brand-mark { color: var(--accent-strong); display: flex; }
 
-  .card ul {
-    padding-left: 20px;
-    margin-bottom: 13px;
-  }
+.header-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
 
-  .card ul li {
-    margin-bottom: 6px;
-  }
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}
 
-  .card ul li:last-child { margin-bottom: 0; }
+.hero-inner { max-width: 620px; }
 
-  .card a {
-    color: var(--blue);
-    text-decoration: none;
-  }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  margin-bottom: 1rem;
+}
 
-  .card a:hover { text-decoration: underline; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 5.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
 
-  /* ── Intro highlight box ── */
-  .highlight {
-    background: var(--blue-light);
-    border-left: 4px solid var(--blue);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 14px;
-    font-size: 14px;
-    color: #1e40af;
-    font-weight: 500;
-  }
+.hero-lede {
+  margin-top: 1.1rem;
+  color: var(--text-secondary);
+  font-size: clamp(0.98rem, 2vw, 1.08rem);
+  max-width: 46ch;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  /* ── Info rows (inside cards) ── */
-  .info-row {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    background: var(--bg);
-    border-radius: 8px;
-    padding: 11px 14px;
-    margin-bottom: 8px;
-    font-size: 14px;
-  }
-  .info-row:last-child { margin-bottom: 0; }
-  .info-row-label {
-    font-weight: 700;
-    color: var(--blue-dark);
-    white-space: nowrap;
-    min-width: 80px;
-  }
-  .info-row-val { color: var(--text); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease;
+  min-height: 48px;
+}
 
-  /* ── Tables ── */
-  .table-wrap {
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    margin: 14px 0;
-  }
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-on-accent);
+  margin-top: 1.9rem;
+}
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-primary:active { transform: translateY(1px); }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
+.btn-icon { flex-shrink: 0; }
 
-  thead tr {
-    background: var(--blue);
-    color: var(--white);
-  }
+/* ============================================================
+   Page body / sections
+   ============================================================ */
+.page-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+}
 
-  thead th {
-    padding: 12px 18px;
+.section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.55rem);
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+}
+
+.section-lede {
+  margin-top: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  max-width: 56ch;
+}
+
+/* ============================================================
+   Notice card (Before you delete)
+   ============================================================ */
+.notice-card {
+  display: flex;
+  gap: 0.9rem;
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-left: 3px solid var(--warn);
+  border-radius: var(--radius-lg);
+  padding: 1.3rem 1.4rem;
+}
+
+.notice-icon {
+  color: var(--warn);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.notice-content h2 { margin-bottom: 0.55rem; }
+
+.notice-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.notice-content p + p { margin-top: 0.6rem; }
+
+.notice-strong {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+/* ============================================================
+   Data grid
+   ============================================================ */
+.data-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.data-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.2rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.data-card:hover { border-color: var(--border-strong); background: var(--surface-hover); }
+
+.data-icon {
+  display: inline-flex;
+  color: var(--accent-strong);
+  background: var(--accent-bg);
+  border-radius: 8px;
+  padding: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.data-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.data-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.retention-note {
+  margin-top: 1.3rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 1.1rem;
+}
+
+/* ============================================================
+   Request deletion
+   ============================================================ */
+.request-card {
+  margin-top: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+}
+
+.request-instructions {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+}
+.request-instructions strong { color: var(--text-primary); }
+
+.placeholder-warning {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--warn);
+  background: var(--warn-bg);
+  border: 1px dashed var(--warn-border);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+.placeholder-warning code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.request-card .btn-primary { margin-top: 1.3rem; }
+
+.request-meta {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  word-break: break-word;
+}
+.request-meta a { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 2px; }
+.request-meta .mono { font-family: var(--font-mono); }
+
+.placeholder-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--warn);
+  border: 1px solid var(--warn-border);
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   Steps
+   ============================================================ */
+.steps {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: flex;
+  gap: 1.1rem;
+  position: relative;
+  padding-bottom: 1.6rem;
+}
+.step:last-child { padding-bottom: 0; }
+
+.step::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 42px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--border);
+}
+.step:last-child::before { display: none; }
+
+.step-index {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-strong);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.step-content h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-top: 0.4rem;
+}
+
+.step-content p {
+  margin-top: 0.3rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+/* ============================================================
+   Privacy
+   ============================================================ */
+.privacy-section p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.link-arrow:hover { border-color: var(--accent-strong); }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 2.5rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.footer-brand .brand-mark { color: var(--text-muted); }
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.footer-links a:hover { color: var(--text-secondary); }
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (min-width: 640px) {
+  .data-grid { grid-template-columns: 1fr 1fr; }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
     text-align: left;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: .3px;
   }
+}
 
-  tbody tr:nth-child(even) { background: var(--blue-light); }
-  tbody tr { border-top: 1px solid var(--border); }
+@media (min-width: 860px) {
+  .data-grid { grid-template-columns: 1fr 1fr; }
+}
 
-  tbody td {
-    padding: 11px 18px;
-    vertical-align: top;
-    line-height: 1.55;
-  }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
 
-  tbody td:first-child {
-    font-weight: 600;
-    color: #1e3a8a;
-    white-space: nowrap;
-  }
+/* Small phones: tighten padding */
+@media (max-width: 360px) {
+  .container { padding: 0 1.1rem; }
+  .btn { padding: 0.8rem 1.15rem; font-size: 0.93rem; }
+}
 
-  /* ── Service tag ── */
-  .stag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background: var(--blue-mid);
-    color: var(--blue-dark);
-    margin-left: 8px;
-    vertical-align: middle;
-  }
+/* ============================================================
+   Privacy Policy — extra components
+   ============================================================ */
 
-  /* ── Contact grid ── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-    margin-top: 14px;
-  }
+.policy-meta {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
 
-  .contact-box {
-    background: var(--bg);
-    border-radius: 10px;
-    padding: 14px 16px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
+.meta-chip {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  white-space: nowrap;
+}
 
-  .contact-box-icon { font-size: 22px; }
+/* Table of contents */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.3rem 1.4rem;
+}
 
-  .contact-box-lbl {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .4px;
-    color: var(--muted);
-    margin-bottom: 2px;
-  }
+.toc h2 {
+  font-size: 1rem !important;
+  margin-bottom: 0.9rem;
+}
 
-  .contact-box-val {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--blue);
-    word-break: break-all;
-  }
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem 1.2rem;
+  column-count: 1;
+}
 
-  /* ── Footer ── */
-  .site-footer {
-    background: #0f172a;
-    color: #94a3b8;
-    text-align: center;
-    padding: 28px 24px;
-    border-radius: var(--radius);
-    font-size: 13px;
-    margin-top: 32px;
-  }
+.toc-grid a {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+.toc-grid a:hover { color: var(--accent-strong); background: var(--surface-hover); }
 
-  .site-footer strong { color: var(--white); }
+.toc-grid a .toc-num {
+  font-family: var(--font-mono);
+  color: var(--accent-strong);
+  flex-shrink: 0;
+  width: 1.6rem;
+}
 
-  .footer-note {
-    margin-top: 10px;
-    font-size: 11.5px;
-    color: #475569;
-  }
+@media (min-width: 640px) {
+  .toc-grid { grid-template-columns: 1fr 1fr; }
+}
 
-  /* ── Responsive ── */
-  @media (max-width: 600px) {
-    body { padding: 16px 10px 48px; }
-    .site-header { padding: 36px 20px 32px; border-radius: 14px; }
-    .card { padding: 22px 16px; }
-    tbody td:first-child { white-space: normal; }
-    .info-row { flex-direction: column; gap: 4px; }
-    .info-row-label { min-width: auto; }
-  }
+/* Policy sections */
+.policy-section {
+  scroll-margin-top: 80px;
+}
+
+.policy-section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.policy-section h2 .num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-strong);
+  font-weight: 500;
+}
+
+.policy-section h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--text-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.policy-section p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.7rem;
+}
+
+.policy-section ul,
+.policy-section ol.plain-list {
+  margin-top: 0.7rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+  display: block;
+}
+.policy-section ol.plain-list { list-style: decimal; }
+
+.policy-section li {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+  line-height: 1.55;
+}
+
+.policy-section strong { color: var(--text-primary); font-weight: 600; }
+
+.policy-section a.inline-link {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Sub-cards for grouped data categories */
+.subsection-card {
+  margin-top: 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.2rem;
+}
+
+/* Tables */
+.table-wrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.policy-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+  font-size: 0.85rem;
+}
+
+.policy-table th,
+.policy-table td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.policy-table th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  white-space: nowrap;
+}
+
+.policy-table td { color: var(--text-secondary); }
+.policy-table tr:last-child td { border-bottom: none; }
+.policy-table td strong { color: var(--text-primary); }
+
+/* Status badges inside tables/lists */
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  white-space: nowrap;
+}
+.badge-accent { color: var(--accent-strong); background: var(--accent-bg); border: 1px solid var(--accent-border); }
+.badge-warn { color: var(--warn); background: var(--warn-bg); border: 1px solid var(--warn-border); }
+
+/* Developer-confirmation callout (distinct from warning card) */
+.confirm-card {
+  margin-top: 1rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+}
+.confirm-card p { color: var(--text-secondary); }
+.confirm-card strong { color: var(--accent-strong); }
+
+/* Back to top */
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.back-to-top:hover { color: var(--accent-strong); }
+
+/* Jurisdiction tag row inside rights section */
+.jurisdiction-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.08rem 0.5rem;
+  margin-right: 0.3rem;
+  margin-top: 0.3rem;
+}
+
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- ══ HEADER ══ -->
-  <header class="site-header">
-    <div class="header-icon">🎮</div>
-    <h1>Gamefinity</h1>
-    <p class="tagline">Privacy Policy</p>
-    <div class="updated-pill">📅&nbsp; Last Updated: July 20, 2026</div>
-  </header>
+<a class="skip-link" href="#toc">Skip to table of contents</a>
 
-  <!-- ══ INTRODUCTION ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">📋</div>
-      <h2>Introduction</h2>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2L29 9V23L16 30L3 23V9L16 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M16 2V16M16 16L29 9M16 16L3 9M16 16V30" stroke="currentColor" stroke-width="1.4" opacity="0.55"/>
+        </svg>
+      </span>
+      <span class="brand-name">Gamefinity</span>
     </div>
-    <div class="highlight">
-      This Privacy Policy applies to the <strong>Gamefinity</strong> Android application, which is currently in development and planned for future release on the Google Play Store. This policy will govern the app's data practices once it becomes publicly available, and by using Gamefinity after launch, you agree to the practices described in this document.
-    </div>
-    <p>We are committed to protecting your privacy. This policy explains exactly what information will be collected when you use our app, why it will be collected, and how it will be used, once the app is live. We do not sell your personal information to any third party.</p>
-    <p>If you do not agree with this policy, please refrain from using the application when it becomes available. Use of Gamefinity after its public release will constitute your acceptance of these terms.</p>
+    <span class="header-tag">Privacy Policy</span>
   </div>
+</header>
 
-  <!-- ══ INFORMATION WE COLLECT ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">🗂️</div>
-      <h2>Information We Collect</h2>
-    </div>
-    <p>We and our third-party SDK partners may collect the following information automatically during normal use of the app:</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Information</th><th>Purpose</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Device Advertising ID</td>
-            <td>Serve and measure personalised advertisements via Google AdMob</td>
-          </tr>
-          <tr>
-            <td>App usage events &amp; sessions</td>
-            <td>Understand gameplay behaviour and improve features via Firebase Analytics</td>
-          </tr>
-          <tr>
-            <td>Crash logs &amp; stack traces</td>
-            <td>Detect and fix app crashes using Firebase Crashlytics</td>
-          </tr>
-          <tr>
-            <td>In-app purchase tokens</td>
-            <td>Validate and fulfil purchases via Google Play Billing</td>
-          </tr>
-          <tr>
-            <td>IP address &amp; approximate country</td>
-            <td>Serve region-appropriate ads and comply with local laws</td>
-          </tr>
-          <tr>
-            <td>Device model, OS version, language</td>
-            <td>Ensure app compatibility and optimise performance</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p>We do not collect your name, email address, phone number, or any other directly identifying personal information unless you voluntarily provide it when contacting us.</p>
-  </div>
+<main>
 
-  <!-- ══ HOW WE USE INFORMATION ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">⚙️</div>
-      <h2>How We Use Information</h2>
-    </div>
-    <p>Information collected is used only for the following purposes:</p>
-    <ul>
-      <li>To operate and maintain the Gamefinity application</li>
-      <li>To display relevant advertisements and generate revenue that supports free gameplay</li>
-      <li>To analyse in-app behaviour and guide improvements to features and difficulty</li>
-      <li>To detect, investigate, and resolve crashes and technical errors</li>
-      <li>To process and verify in-app purchase transactions</li>
-      <li>To comply with applicable laws, Google Play policies, and AdMob policies</li>
-    </ul>
-    <p>We do not use your data for automated profiling that produces significant legal or similarly significant effects on you.</p>
-  </div>
-
-  <!-- ══ PERMISSIONS ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">🔐</div>
-      <h2>Permissions Used</h2>
-    </div>
-    <p>Gamefinity requests only the Android permissions strictly necessary for its operation:</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Permission</th><th>Purpose</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>INTERNET</td>
-            <td>Load advertisements, send analytics events, and process in-app purchases</td>
-          </tr>
-          <tr>
-            <td>ACCESS_NETWORK_STATE</td>
-            <td>Check connectivity before making network calls to avoid unnecessary errors</td>
-          </tr>
-          <tr>
-            <td>BILLING</td>
-            <td>Required by Google Play to initiate and complete in-app purchase transactions</td>
-          </tr>
-          <tr>
-            <td>AD_ID (Android 13+)</td>
-            <td>Access the Google Advertising ID for personalised ad serving and measurement</td>
-          </tr>
-          <tr>
-            <td>VIBRATE</td>
-            <td>Provide optional haptic feedback during in-game interactions</td>
-          </tr>
-          <tr>
-            <td>WAKE_LOCK</td>
-            <td>Keep the screen active during an active gameplay session</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ══ GOOGLE ADMOB ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">📢</div>
-      <h2>Google AdMob <span class="stag">Advertising</span></h2>
-    </div>
-    <p>Gamefinity uses <strong>Google AdMob</strong>, an advertising service by Google LLC, to display banner, interstitial, and rewarded advertisements within the app.</p>
-    <div class="info-row">
-      <span class="info-row-label">Collects</span>
-      <span class="info-row-val">Advertising ID, device information, IP address, ad interaction data, and approximate location.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Purpose</span>
-      <span class="info-row-val">Deliver relevant ads to support free gameplay without charging users upfront.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Policy</span>
-      <span class="info-row-val"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></span>
-    </div>
-    <p style="margin-top:14px;">You may opt out of personalised ads at any time via <strong>Settings → Google → Ads → Opt out of Ads Personalisation</strong> on your Android device. Non-personalised ads will still appear.</p>
-  </div>
-
-  <!-- ══ FIREBASE ANALYTICS ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">📊</div>
-      <h2>Firebase Analytics <span class="stag">Analytics</span></h2>
-    </div>
-    <p>We use <strong>Google Firebase Analytics</strong> to understand how players engage with Gamefinity and to make data-driven decisions that improve the experience.</p>
-    <div class="info-row">
-      <span class="info-row-label">Collects</span>
-      <span class="info-row-val">App events, session duration, screen views, in-app actions, device model, OS version, and country (derived from IP).</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Purpose</span>
-      <span class="info-row-val">Measure user engagement, track feature usage, and guide future app updates.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Retention</span>
-      <span class="info-row-val">Analytics data is retained for up to 14 months per Google's default policy.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Policy</span>
-      <span class="info-row-val"><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></span>
-    </div>
-    <p style="margin-top:14px;">Analytics data is aggregated and does not personally identify you. No names, emails, or contact details are linked to analytics events.</p>
-  </div>
-
-  <!-- ══ FIREBASE CRASHLYTICS ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">🛠️</div>
-      <h2>Firebase Crashlytics <span class="stag">Crash Reporting</span></h2>
-    </div>
-    <p>We use <strong>Firebase Crashlytics</strong> to automatically detect, record, and diagnose app crashes in real time, allowing us to release fixes quickly.</p>
-    <div class="info-row">
-      <span class="info-row-label">Collects</span>
-      <span class="info-row-val">Stack traces, crash timestamps, device model, OS version, app version, and a randomly generated installation UUID.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Purpose</span>
-      <span class="info-row-val">Identify the root cause of crashes and stability issues to improve app reliability.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">No PII</span>
-      <span class="info-row-val">Crashlytics does not collect your name, email address, or any personally identifying information.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Policy</span>
-      <span class="info-row-val"><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></span>
-    </div>
-  </div>
-
-  <!-- ══ GOOGLE PLAY BILLING ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">💳</div>
-      <h2>Google Play Billing <span class="stag">Purchases</span></h2>
-    </div>
-    <p>Gamefinity offers optional in-app purchases — such as premium features, ad removal, or virtual currency — processed entirely through <strong>Google Play Billing</strong>.</p>
-    <div class="info-row">
-      <span class="info-row-label">Collects</span>
-      <span class="info-row-val">Purchase token, product ID, purchase timestamp, and transaction status. Payment card details are handled exclusively by Google.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Purpose</span>
-      <span class="info-row-val">Validate and fulfil in-app purchase transactions securely.</span>
-    </div>
-    <div class="info-row">
-      <span class="info-row-label">Policy</span>
-      <span class="info-row-val"><a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">play.google.com/about/play-terms/</a></span>
-    </div>
-    <p style="margin-top:14px;">We never have access to your payment card details. For refunds or billing disputes, contact Google Play Support directly through your Google account.</p>
-  </div>
-
-  <!-- ══ THIRD-PARTY SERVICES ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">🌐</div>
-      <h2>Third-Party Services</h2>
-    </div>
-    <p>The following third-party services operate within Gamefinity. Each has its own independent privacy policy that governs its data handling:</p>
-    <ul>
-      <li><strong>Google AdMob</strong> — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
-      <li><strong>Firebase Analytics</strong> — <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></li>
-      <li><strong>Firebase Crashlytics</strong> — <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a></li>
-      <li><strong>Google Play Billing</strong> — <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener">play.google.com/about/play-terms/</a></li>
-    </ul>
-    <p>We are not responsible for the data practices of these third parties. Data shared with these services is governed by their respective terms and privacy policies.</p>
-  </div>
-
-  <!-- ══ DATA SECURITY ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">🔒</div>
-      <h2>Data Security</h2>
-    </div>
-    <p>We take reasonable technical and organisational steps to safeguard your information, including:</p>
-    <ul>
-      <li>All data transmitted between the app and third-party services is encrypted via HTTPS/TLS</li>
-      <li>We do not operate our own servers that store personal user data</li>
-      <li>Access to analytics dashboards and crash reports is restricted to authorised developers only</li>
-      <li>Third-party SDKs are kept up to date to address known security vulnerabilities</li>
-    </ul>
-    <p>No method of electronic transmission or storage is 100% secure. While we use commercially reasonable measures to protect your information, absolute security cannot be guaranteed.</p>
-  </div>
-
-  <!-- ══ CHILDREN'S PRIVACY ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">👶</div>
-      <h2>Children's Privacy</h2>
-    </div>
-    <p>Gamefinity is <strong>not directed at children under the age of 13</strong>. We do not knowingly collect personal information from children under 13, or the applicable age of digital consent in your jurisdiction.</p>
-    <p>If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately using the details below. We will take prompt steps to delete such information from our records.</p>
-    <p>If you are in the European Economic Area (EEA), the minimum age of consent is 16, unless local law specifies a lower age (minimum 13). Users below this age should use the app only under parental supervision.</p>
-  </div>
-
-  <!-- ══ YOUR RIGHTS ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">⚖️</div>
-      <h2>Your Rights</h2>
-    </div>
-    <p>Depending on your location, you may have the following rights regarding your data:</p>
-    <ul>
-      <li><strong>Access</strong> — Request a copy of the data we hold about you</li>
-      <li><strong>Correction</strong> — Request that inaccurate data be corrected</li>
-      <li><strong>Deletion</strong> — Request erasure of your data (right to be forgotten)</li>
-      <li><strong>Opt-out of personalised ads</strong> — Via your device's advertising settings</li>
-      <li><strong>Data portability</strong> — Request your data in a portable format where applicable</li>
-      <li><strong>Withdraw consent</strong> — Withdraw consent at any time where processing is consent-based</li>
-    </ul>
-    <p>To exercise any of these rights, contact us at the address listed below. We will respond within 30 days. Note that some data is collected directly by Google's SDKs; for that data, you may need to exercise your rights through Google's own privacy controls.</p>
-  </div>
-
-  <!-- ══ CHANGES ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">🔄</div>
-      <h2>Changes to This Policy</h2>
-    </div>
-    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we do, we will:</p>
-    <ul>
-      <li>Update the <strong>Last Updated</strong> date shown at the top of this page</li>
-      <li>Post the revised policy to the same URL used in the Google Play Console listing</li>
-      <li>Notify users via an in-app notice for material changes where appropriate</li>
-    </ul>
-    <p>We encourage you to review this policy periodically. Continued use of Gamefinity after any updates constitutes acceptance of the revised policy.</p>
-  </div>
-
-  <!-- ══ CONTACT ══ -->
-  <div class="card">
-    <div class="card-title">
-      <div class="card-icon">✉️</div>
-      <h2>Contact Us</h2>
-    </div>
-    <p>If you have questions, concerns, or requests about this Privacy Policy or our data practices, please get in touch:</p>
-    <div class="contact-grid">
-      <div class="contact-box">
-        <span class="contact-box-icon">📧</span>
-        <div>
-          <div class="contact-box-lbl">Email</div>
-          <div class="contact-box-val">appfinitytechnologies@gmail.com</div>
-        </div>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Legal &amp; privacy</p>
+      <h1>Gamefinity Privacy Policy</h1>
+      <p class="hero-lede">
+        This Privacy Policy explains what information Gamefinity collects, why, how it is
+        used and shared, and the choices and rights available to you.
+      </p>
+      <div class="policy-meta">
+        <span class="meta-chip">Effective date: <strong style="color:var(--warn)">[EFFECTIVE_DATE — DEVELOPER TO CONFIRM]</strong></span>
+        <span class="meta-chip">App: Gamefinity</span>
+        <span class="meta-chip">Package: com.appfinity.gamefinity</span>
       </div>
     </div>
-    <p style="margin-top:16px; font-size:13px; color:#64748b;">We aim to respond to all privacy-related enquiries within <strong>5–10 business days</strong>. For urgent matters, please include "Privacy Request" in the subject line of your email.</p>
+  </section>
+
+  <div class="container page-body">
+
+    <p class="placeholder-warning" role="note" style="margin-top:-1rem;">
+      <strong>Publishing notice:</strong> this page contains clearly marked placeholders —
+      legal entity name, business address, effective date, distribution regions, target
+      audience, and the CDN/backend provider — that must be confirmed and filled in before
+      this policy is published. Do not publish with placeholders still visible.
+    </p>
+
+    <!-- ============ TABLE OF CONTENTS ============ -->
+    <nav class="toc" id="toc" aria-label="Table of contents">
+      <h2>On this page</h2>
+      <div class="toc-grid">
+        <a href="#introduction"><span class="toc-num">01</span>Introduction</a>
+        <a href="#who-we-are"><span class="toc-num">02</span>Who we are</a>
+        <a href="#scope"><span class="toc-num">03</span>Scope of this policy</a>
+        <a href="#information-we-collect"><span class="toc-num">04</span>Information we collect</a>
+        <a href="#permissions"><span class="toc-num">05</span>Permissions we request</a>
+        <a href="#purposes"><span class="toc-num">06</span>How and why we use information</a>
+        <a href="#legal-bases"><span class="toc-num">07</span>Legal bases (EU/EEA users)</a>
+        <a href="#firebase"><span class="toc-num">08</span>Firebase services</a>
+        <a href="#google-services"><span class="toc-num">09</span>Google services</a>
+        <a href="#meta"><span class="toc-num">10</span>Meta / Facebook Audience Network</a>
+        <a href="#advertising"><span class="toc-num">11</span>Advertising &amp; your choices</a>
+        <a href="#sharing"><span class="toc-num">12</span>Who we share data with</a>
+        <a href="#transfers"><span class="toc-num">13</span>International data transfers</a>
+        <a href="#retention"><span class="toc-num">14</span>Data retention</a>
+        <a href="#deletion"><span class="toc-num">15</span>Data deletion</a>
+        <a href="#account-deletion"><span class="toc-num">16</span>Account deletion</a>
+        <a href="#security"><span class="toc-num">17</span>Security measures</a>
+        <a href="#children"><span class="toc-num">18</span>Children's privacy</a>
+        <a href="#rights"><span class="toc-num">19</span>Your privacy rights</a>
+        <a href="#withdraw-consent"><span class="toc-num">20</span>Withdrawing consent</a>
+        <a href="#third-party-links"><span class="toc-num">21</span>Third-party links</a>
+        <a href="#automated"><span class="toc-num">22</span>Automated decision-making</a>
+        <a href="#changes"><span class="toc-num">23</span>Changes to this policy</a>
+        <a href="#contact"><span class="toc-num">24</span>Contact &amp; complaints</a>
+      </div>
+    </nav>
+
+    <!-- 1. INTRODUCTION -->
+    <section class="section policy-section" id="introduction" aria-labelledby="h-introduction">
+      <h2 id="h-introduction"><span class="num">01</span>Introduction</h2>
+      <p>
+        This Privacy Policy applies to the Gamefinity mobile application ("Gamefinity," "the
+        app," "we," "us," or "our"), available on Google Play under package name
+        <strong>com.appfinity.gamefinity</strong>. It describes what information the app
+        collects, how it is used and shared, how long it is kept, and the choices and rights
+        you have regarding your information.
+      </p>
+      <p>
+        This policy is written to reflect what Gamefinity's code and configuration actually
+        do. Where something could not be confirmed from the app's source code, it is marked
+        below as requiring developer confirmation rather than assumed.
+      </p>
+    </section>
+
+    <!-- 2. WHO WE ARE -->
+    <section class="section policy-section" id="who-we-are" aria-labelledby="h-who-we-are">
+      <h2 id="h-who-we-are"><span class="num">02</span>Who we are</h2>
+      <p>
+        Gamefinity is developed and operated by
+        <strong>[LEGAL_ENTITY_NAME — DEVELOPER TO CONFIRM]</strong>
+        (referred to in this policy as "we," "us," or "our"), doing business under the
+        developer label <strong>Appfinity Technologies</strong>.
+      </p>
+      <p>
+        Registered / business address: <strong>[BUSINESS_ADDRESS — DEVELOPER TO CONFIRM]</strong>
+      </p>
+      <p>
+        Privacy contact: <a class="inline-link" href="mailto:appfinitytechnologies@gmail.com">appfinitytechnologies@gmail.com</a>
+      </p>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer confirmation required:</strong> legal entity name and registered
+          business address must be confirmed before publishing. If a Data Protection Officer
+          is required under applicable law, their contact details should also be added here.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. SCOPE -->
+    <section class="section policy-section" id="scope" aria-labelledby="h-scope">
+      <h2 id="h-scope"><span class="num">03</span>Scope of this policy</h2>
+      <p>
+        This policy covers the Gamefinity Android application only. It does not cover
+        third-party websites, apps, or services that Gamefinity may link to or that process
+        data independently, such as Google, Meta, or your device manufacturer — those
+        parties' own privacy policies govern their handling of your information.
+      </p>
+      <p>
+        Gamefinity is currently offered in the following countries/regions:
+        <strong>[DISTRIBUTION_REGIONS — DEVELOPER TO CONFIRM]</strong>.
+        The applicability of laws referenced in this policy (for example, the EU GDPR or
+        India's DPDP Act) depends on where the app is actually offered and used.
+      </p>
+    </section>
+
+    <!-- 4. INFORMATION WE COLLECT -->
+    <section class="section policy-section" id="information-we-collect" aria-labelledby="h-info">
+      <h2 id="h-info"><span class="num">04</span>Information we collect</h2>
+      <p>
+        The tables below describe each category of information Gamefinity processes, based
+        on the app's current implementation.
+      </p>
+
+      <h3 id="account-data">4.1 Account &amp; authentication data</h3>
+      <p>When you sign in with Google, we process:</p>
+      <div class="table-wrap">
+        <table class="policy-table">
+          <thead><tr><th>Field</th><th>Source</th><th>Storage</th><th>Shared with</th></tr></thead>
+          <tbody>
+            <tr><td>Firebase UID</td><td>Firebase Authentication</td><td>Local (encrypted) + Firebase servers</td><td>Firebase, Crashlytics</td></tr>
+            <tr><td>Google account email</td><td>Google Sign-In</td><td>Local (encrypted) + Firebase servers</td><td>Firebase, Crashlytics (see 4.5)</td></tr>
+            <tr><td>Google display name</td><td>Google Sign-In</td><td>Local (encrypted)</td><td>Firebase</td></tr>
+            <tr><td>Google profile photo URL</td><td>Google Sign-In</td><td>Local (unencrypted URL)</td><td>Loaded via Google CDN</td></tr>
+            <tr><td>Google ID token</td><td>Google Sign-In</td><td>In-memory only, not persisted</td><td>Exchanged with Firebase Authentication</td></tr>
+            <tr><td>Login type, session timestamps</td><td>App-generated</td><td>Local only</td><td>Not shared</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="guest-data">4.2 Guest account data</h3>
+      <p>
+        If you use Gamefinity without signing in, we generate a random guest identifier
+        (UUID) and a display name such as "Guest-XXXXXX." No email or other personal
+        information is collected for guest sessions. This identifier is stored locally
+        (encrypted) and is not transmitted to any third party.
+      </p>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer confirmation required:</strong> whether the guest identifier is
+          fully removed when an account is deleted, or only when the app session is cleared.
+        </p>
+      </div>
+
+      <h3 id="game-data">4.3 Game &amp; local data</h3>
+      <p>
+        Gameplay data — game state, scores, difficulty level, and preferences such as sound,
+        music, vibration, notifications, and hints — is stored only on your device and is
+        not transmitted to us or any third party.
+      </p>
+
+      <h3 id="analytics-data">4.4 Analytics data</h3>
+      <p>
+        We use Firebase Analytics to understand how Gamefinity is used. Events we track
+        include sign-in and sign-out activity, ad-related events, consent-dialog
+        interactions, and general engagement events. Every event automatically includes the
+        app version. Firebase Analytics data is retained by Google for up to 14 months and
+        is <strong>not</strong> automatically deleted when you delete your account.
+      </p>
+
+      <h3 id="crash-data">4.5 Crash &amp; diagnostic data</h3>
+      <p>
+        We use Firebase Crashlytics to diagnose app crashes and authentication errors. This
+        includes crash stack traces, exception details, device model, OS version, app
+        version, your Firebase UID, and — specifically — <strong>your account email
+        address</strong>, which is sent to Crashlytics as a custom key to help us correlate
+        crash reports. On authentication failures, we may also transmit the app's package
+        name and signing-certificate fingerprints for debugging. Crashlytics data is
+        retained by Firebase for 90 days. Your UID and email are reset when you delete your
+        account, but crash reports already logged during that 90-day window may persist
+        without being linked back to you.
+      </p>
+
+      <h3 id="performance-data">4.6 Performance data</h3>
+      <p>
+        Firebase Performance Monitoring is included in the app and automatically collects
+        network-request and app-startup performance metrics. This does not include personal
+        content, but is disclosed here for transparency.
+      </p>
+
+      <h3 id="advertising-data">4.7 Advertising data</h3>
+      <p>
+        Gamefinity shows ads using Google Mobile Ads (AdMob), with Meta Audience Network as a
+        mediation partner. When you consent to ads personalization (see Section 11), these
+        providers may use your Advertising ID (GAID), device and technical information, and
+        ad interaction data to serve, measure, and personalize ads. Ad SDKs are not
+        initialized until our consent gate confirms it is permitted to request ads.
+      </p>
+
+      <h3 id="notification-data">4.8 Push notification data</h3>
+      <p>
+        Gamefinity uses Firebase Cloud Messaging (FCM) to deliver notifications. A device
+        registration token is generated by Firebase on startup. On Android 13 and above, we
+        request the notification permission at runtime.
+      </p>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer confirmation required:</strong> whether the FCM token is sent to
+          any backend server beyond Firebase, and whether the in-app notification toggle
+          fully disables token generation or only filters what is shown.
+        </p>
+      </div>
+
+      <h3 id="remote-config-data">4.9 Remote Config</h3>
+      <p>
+        We use Firebase Remote Config to control which ad formats are shown and how
+        frequently. This does not involve personal data.
+      </p>
+
+      <h3 id="cdn-data">4.10 CDN / backend data</h3>
+      <p>
+        Some in-app images are loaded from a remote address at app startup. Loading these
+        images involves standard network request metadata (such as your IP address) being
+        received by the hosting provider.
+      </p>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer confirmation required:</strong> the identity of the CDN/backend
+          provider hosting these image assets, and that provider's data-retention practices,
+          must be confirmed and disclosed here before publishing.
+        </p>
+      </div>
+
+      <h3 id="device-data">4.11 Device &amp; technical data</h3>
+      <p>
+        Firebase SDKs automatically collect device model, manufacturer, operating system
+        version, and app version. Gamefinity also performs local root-detection and
+        emulator-detection checks for security purposes; the results of these checks are not
+        transmitted anywhere except as part of crash-debugging data described in Section 4.5.
+      </p>
+
+      <h3 id="network-data">4.12 Network / IP information</h3>
+      <p>
+        Like virtually all internet-connected apps, your IP address is inherently visible to
+        Firebase, Google, Meta, and any CDN/backend provider we use whenever the app makes a
+        network request. We do not separately log or store IP addresses ourselves.
+      </p>
+    </section>
+
+    <!-- 5. PERMISSIONS -->
+    <section class="section policy-section" id="permissions" aria-labelledby="h-permissions">
+      <h2 id="h-permissions"><span class="num">05</span>Permissions we request</h2>
+      <div class="table-wrap">
+        <table class="policy-table">
+          <thead><tr><th>Permission</th><th>Type</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>INTERNET</td><td>Normal</td><td>Required for Firebase, advertising, and image loading</td></tr>
+            <tr><td>ACCESS_NETWORK_STATE</td><td>Normal</td><td>Checks connectivity before requesting ads</td></tr>
+            <tr><td>VIBRATE</td><td>Normal</td><td>Haptic feedback during gameplay</td></tr>
+            <tr><td>POST_NOTIFICATIONS</td><td>Dangerous (runtime, Android 13+)</td><td>Delivers push notifications via FCM</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Gamefinity does not request access to your location, camera, microphone, contacts,
+        storage, Bluetooth, SMS, or biometric data.
+      </p>
+    </section>
+
+    <!-- 6. PURPOSES -->
+    <section class="section policy-section" id="purposes" aria-labelledby="h-purposes">
+      <h2 id="h-purposes"><span class="num">06</span>How and why we use information</h2>
+      <ul>
+        <li><strong>To provide the app's core functionality</strong> — authenticating you, saving game progress, and applying your preferences.</li>
+        <li><strong>To maintain and improve the app</strong> — analytics on feature usage and engagement.</li>
+        <li><strong>To diagnose and fix problems</strong> — crash reporting and performance monitoring.</li>
+        <li><strong>To deliver and measure advertising</strong> — where you have provided the required consent.</li>
+        <li><strong>To send notifications</strong> — where permitted by your device settings.</li>
+        <li><strong>To protect the app and its users</strong> — root/emulator detection, signature verification.</li>
+      </ul>
+    </section>
+
+    <!-- 7. LEGAL BASES -->
+    <section class="section policy-section" id="legal-bases" aria-labelledby="h-legal-bases">
+      <h2 id="h-legal-bases"><span class="num">07</span>Legal bases (EU/EEA users)</h2>
+      <p>
+        If you are located in the European Economic Area or the UK, we rely on the following
+        legal bases under the GDPR, to the extent this section is confirmed as applicable to
+        Gamefinity's actual distribution:
+      </p>
+      <ul>
+        <li><strong>Consent</strong> — for ads personalization and any processing gated by our consent (UMP) tool.</li>
+        <li><strong>Performance of a contract</strong> — for account creation, authentication, and delivering core app functionality you request.</li>
+        <li><strong>Legitimate interests</strong> — for analytics, crash diagnostics, and security measures such as root/emulator detection, balanced against your rights and interests.</li>
+      </ul>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer/legal confirmation required:</strong> this section should only
+          appear in the published policy if Gamefinity is confirmed as offered to EU/EEA/UK
+          users, and the specific legal basis per processing activity should be reviewed by
+          qualified counsel.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. FIREBASE -->
+    <section class="section policy-section" id="firebase" aria-labelledby="h-firebase">
+      <h2 id="h-firebase"><span class="num">08</span>Firebase services</h2>
+      <p>Gamefinity uses the following Firebase (Google) services:</p>
+      <ul>
+        <li><strong>Firebase Authentication</strong> — account sign-in.</li>
+        <li><strong>Firebase Analytics</strong> — usage analytics (Section 4.4).</li>
+        <li><strong>Firebase Crashlytics</strong> — crash reporting (Section 4.5).</li>
+        <li><strong>Firebase Remote Config</strong> — ad-display configuration.</li>
+        <li><strong>Firebase Cloud Messaging</strong> — push notifications.</li>
+        <li><strong>Firebase Performance Monitoring</strong> — app performance metrics.</li>
+      </ul>
+      <p>
+        Learn more about how Firebase handles data at Google's official
+        <a class="inline-link" href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase privacy and security documentation</a>.
+      </p>
+    </section>
+
+    <!-- 9. GOOGLE SERVICES -->
+    <section class="section policy-section" id="google-services" aria-labelledby="h-google">
+      <h2 id="h-google"><span class="num">09</span>Google services</h2>
+      <p>In addition to Firebase, Gamefinity uses:</p>
+      <ul>
+        <li><strong>Google Sign-In / Android Credential Manager</strong> — for authentication.</li>
+        <li><strong>Google Mobile Ads SDK (AdMob)</strong> — for advertising.</li>
+        <li><strong>Google User Messaging Platform (UMP)</strong> — to collect and manage your consent choices.</li>
+        <li><strong>Google Play Integrity API SDK</strong> — included for app-integrity checks; token-based verification with Google's servers is not confirmed as active in the current build.</li>
+      </ul>
+      <p>
+        See Google's <a class="inline-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+        and <a class="inline-link" href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">how Google uses information from sites or apps that use its services</a>.
+      </p>
+    </section>
+
+    <!-- 10. META -->
+    <section class="section policy-section" id="meta" aria-labelledby="h-meta">
+      <h2 id="h-meta"><span class="num">10</span>Meta / Facebook Audience Network</h2>
+      <p>
+        Gamefinity uses Meta Audience Network as a mediation partner for advertising. When
+        ads personalization consent is granted, Meta Platforms, Inc. may independently
+        collect device and advertising identifiers to serve and measure ads, in accordance
+        with its own privacy practices. Meta is a separate data controller for this
+        processing, not a party we directly control.
+      </p>
+      <p>
+        See Meta's <a class="inline-link" href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Privacy Policy</a>
+        for details.
+      </p>
+    </section>
+
+    <!-- 11. ADVERTISING -->
+    <section class="section policy-section" id="advertising" aria-labelledby="h-advertising">
+      <h2 id="h-advertising"><span class="num">11</span>Advertising &amp; your choices</h2>
+      <p>
+        Gamefinity shows App Open, Interstitial, Native, and Banner ads. Before requesting
+        any ad, we check your consent status through Google's User Messaging Platform (UMP).
+        Ad SDKs are only initialized if that check confirms we are permitted to request ads.
+      </p>
+      <p>You can manage your advertising choices at any time by:</p>
+      <ul>
+        <li>Reopening the in-app privacy/consent form to change your ads-personalization choice.</li>
+        <li>Resetting or opting out of your device's Advertising ID in your Android system settings.</li>
+      </ul>
+      <p>
+        Gamefinity does not use child-directed advertising settings
+        (<code>setTagForUnderAgeOfConsent(false)</code>) — see Section 18, Children's
+        Privacy.
+      </p>
+    </section>
+
+    <!-- 12. SHARING -->
+    <section class="section policy-section" id="sharing" aria-labelledby="h-sharing">
+      <h2 id="h-sharing"><span class="num">12</span>Who we share data with</h2>
+      <div class="table-wrap">
+        <table class="policy-table">
+          <thead><tr><th>Recipient</th><th>Category of data</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Google / Firebase</td><td>Account, analytics, crash, performance, notification data</td><td>App infrastructure &amp; services</td></tr>
+            <tr><td>Google Ads</td><td>Advertising ID, ad interaction data</td><td>Ad serving &amp; measurement</td></tr>
+            <tr><td>Meta Platforms, Inc.</td><td>Advertising ID, device data</td><td>Ad mediation &amp; measurement</td></tr>
+            <tr><td>CDN/backend provider <span class="badge badge-warn">unconfirmed</span></td><td>IP address, request metadata</td><td>Serving static image assets</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>We do not sell your personal information.</p>
+    </section>
+
+    <!-- 13. TRANSFERS -->
+    <section class="section policy-section" id="transfers" aria-labelledby="h-transfers">
+      <h2 id="h-transfers"><span class="num">13</span>International data transfers</h2>
+      <p>
+        Google/Firebase and Meta process data on servers located primarily in the United
+        States and other countries where they operate infrastructure. If you are located
+        outside these countries, your information may be transferred internationally,
+        subject to each provider's own safeguards.
+      </p>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer confirmation required:</strong> the location and transfer
+          practices of the CDN/backend provider (Section 4.10) must be added once identified.
+        </p>
+      </div>
+    </section>
+
+    <!-- 14. RETENTION -->
+    <section class="section policy-section" id="retention" aria-labelledby="h-retention">
+      <h2 id="h-retention"><span class="num">14</span>Data retention</h2>
+      <div class="table-wrap">
+        <table class="policy-table">
+          <thead><tr><th>Data</th><th>Retention</th></tr></thead>
+          <tbody>
+            <tr><td>Local session &amp; game data</td><td>Until you clear it, log out, or uninstall the app</td></tr>
+            <tr><td>Firebase Authentication record</td><td>Until you delete your account</td></tr>
+            <tr><td>Firebase Analytics</td><td>Up to 14 months (Google policy); not reset on account deletion</td></tr>
+            <tr><td>Firebase Crashlytics</td><td>90 days (Firebase policy)</td></tr>
+            <tr><td>Firebase Performance</td><td>Governed by Google's retention policy</td></tr>
+            <tr><td>FCM registration token</td><td>Until refreshed, or uninstall; not explicitly deleted on account deletion</td></tr>
+            <tr><td>Advertising ID data (Google/Meta)</td><td>Per each provider's own policy</td></tr>
+            <tr><td>CDN/backend logs <span class="badge badge-warn">unconfirmed</span></td><td>Developer confirmation required</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 15. DATA DELETION -->
+    <section class="section policy-section" id="deletion" aria-labelledby="h-deletion">
+      <h2 id="h-deletion"><span class="num">15</span>Data deletion</h2>
+      <p>
+        You can request deletion of your Gamefinity account and locally stored data at any
+        time. Deleting your account does not automatically erase historical analytics or
+        crash-report entries already logged with Google, which follow the retention periods
+        in Section 14 independent of account deletion.
+      </p>
+    </section>
+
+    <!-- 16. ACCOUNT DELETION -->
+    <section class="section policy-section" id="account-deletion" aria-labelledby="h-account-deletion">
+      <h2 id="h-account-deletion"><span class="num">16</span>Account deletion</h2>
+      <p>
+        Deleting your account through the app (for Google-authenticated users) will:
+      </p>
+      <ul>
+        <li>Delete your Firebase Authentication record.</li>
+        <li>Clear locally stored game state and best scores.</li>
+        <li>Clear locally stored session data.</li>
+        <li>Reset your Crashlytics user ID and email custom key.</li>
+      </ul>
+      <p>It will <strong>not</strong> automatically:</p>
+      <ul>
+        <li>Erase historical Firebase Analytics data (per the retention period in Section 14).</li>
+        <li>Unregister your FCM push-notification token from Firebase's servers.</li>
+        <li>Remove historical Crashlytics crash reports already logged.</li>
+      </ul>
+      <p>
+        You can also request account deletion, or ask questions about it, via our dedicated
+        deletion page:
+        <a class="inline-link" href="YOUR_ACCOUNT_DELETION_PAGE_URL" target="_blank" rel="noopener">Gamefinity Account Deletion</a>
+        <span class="badge badge-warn" style="margin-left:0.4rem;">placeholder URL</span>,
+        or by emailing
+        <a class="inline-link" href="mailto:appfinitytechnologies@gmail.com">appfinitytechnologies@gmail.com</a>.
+      </p>
+    </section>
+
+    <!-- 17. SECURITY -->
+    <section class="section policy-section" id="security" aria-labelledby="h-security">
+      <h2 id="h-security"><span class="num">17</span>Security measures</h2>
+      <ul>
+        <li>HTTPS is enforced; cleartext network traffic is blocked.</li>
+        <li>Local session data is encrypted with AES-GCM via the Android Keystore.</li>
+        <li>Automatic device backup of app data is disabled.</li>
+        <li>The app is obfuscated with R8 in full mode, and debug logging is stripped from release builds.</li>
+        <li>App signature verification and root/emulator detection are used to help protect app integrity.</li>
+      </ul>
+      <p>
+        Certificate pinning is not currently implemented. No security measure can guarantee
+        absolute protection, and we encourage you to keep your device and app up to date.
+      </p>
+    </section>
+
+    <!-- 18. CHILDREN -->
+    <section class="section policy-section" id="children" aria-labelledby="h-children">
+      <h2 id="h-children"><span class="num">18</span>Children's privacy</h2>
+      <p>
+        Gamefinity is listed as a general-audience game. We do not use Google's
+        child-directed advertising tag, and the app does not implement an age gate.
+      </p>
+      <div class="confirm-card">
+        <p>
+          <strong>Developer confirmation required:</strong> the app's actual target audience
+          and Google Play age-rating configuration must be confirmed before this section can
+          state definitively whether Gamefinity is, or is not, directed to children under 13
+          (or the relevant age threshold in your region). If children are part of the
+          intended or actual audience, additional obligations (such as COPPA or the EU's
+          rules on children's data) may apply and this section must be revised accordingly.
+        </p>
+      </div>
+    </section>
+
+    <!-- 19. RIGHTS -->
+    <section class="section policy-section" id="rights" aria-labelledby="h-rights">
+      <h2 id="h-rights"><span class="num">19</span>Your privacy rights</h2>
+
+      <h3>All users</h3>
+      <p><span class="jurisdiction-tag">Universal</span></p>
+      <ul>
+        <li>Request deletion of your account (Section 16).</li>
+        <li>Withdraw ads-personalization consent at any time (Section 20).</li>
+        <li>Turn off notifications through your device's system settings.</li>
+        <li>Reset or opt out of your Advertising ID through your device's system settings.</li>
+      </ul>
+
+      <h3>If you are in the EU/EEA/UK</h3>
+      <p><span class="jurisdiction-tag">GDPR</span></p>
+      <ul>
+        <li>Right of access to your personal data.</li>
+        <li>Right to rectification of inaccurate data.</li>
+        <li>Right to erasure ("right to be forgotten"), subject to Section 16's limitations.</li>
+        <li>Right to restrict or object to certain processing.</li>
+        <li>Right to data portability.</li>
+        <li>Right to withdraw consent at any time.</li>
+        <li>Right to lodge a complaint with your local data protection supervisory authority.</li>
+      </ul>
+      <div class="confirm-card">
+        <p>
+          <strong>Note:</strong> self-service data access and export are not currently
+          implemented in the app. To exercise these rights, contact us at
+          <a class="inline-link" href="mailto:appfinitytechnologies@gmail.com">appfinitytechnologies@gmail.com</a>.
+        </p>
+      </div>
+
+      <h3>If you are in India</h3>
+      <p><span class="jurisdiction-tag">India DPDP Act</span></p>
+      <p>
+        Under India's Digital Personal Data Protection Act, 2023 and its 2025 Rules,
+        applicable rights (including access, correction, and erasure of personal data, and
+        grievance redressal) are being phased in, with core provisions in force from
+        13 November 2025 and most substantive compliance obligations taking effect from
+        13 May 2027. We will update this section as our obligations and the app's India
+        availability are confirmed.
+      </p>
+
+      <h3>US state privacy laws</h3>
+      <p><span class="jurisdiction-tag">US states (where applicable)</span></p>
+      <p>
+        If you are a resident of a US state with an applicable comprehensive privacy law, you
+        may have rights similar to those listed above. Contact us to make a request.
+      </p>
+    </section>
+
+    <!-- 20. WITHDRAW CONSENT -->
+    <section class="section policy-section" id="withdraw-consent" aria-labelledby="h-withdraw">
+      <h2 id="h-withdraw"><span class="num">20</span>Withdrawing consent</h2>
+      <p>
+        You can change or withdraw your ads-personalization consent at any time by reopening
+        the in-app privacy choices form (accessible from the app's settings/privacy options),
+        which is powered by Google's User Messaging Platform.
+      </p>
+    </section>
+
+    <!-- 21. THIRD-PARTY LINKS -->
+    <section class="section policy-section" id="third-party-links" aria-labelledby="h-links">
+      <h2 id="h-links"><span class="num">21</span>Third-party links</h2>
+      <ul>
+        <li><a class="inline-link" href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy &amp; Security</a></li>
+        <li><a class="inline-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        <li><a class="inline-link" href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">How Google Uses Information</a></li>
+        <li><a class="inline-link" href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta Privacy Policy</a></li>
+      </ul>
+    </section>
+
+    <!-- 22. AUTOMATED DECISION-MAKING -->
+    <section class="section policy-section" id="automated" aria-labelledby="h-automated">
+      <h2 id="h-automated"><span class="num">22</span>Automated decision-making</h2>
+      <p>
+        The only automated processing involving your data is ad personalization, which
+        selects ads based on interest and behavioral signals when you have provided consent.
+        This does not produce legal or similarly significant effects on you, and Gamefinity
+        does not use any other automated decision-making or profiling.
+      </p>
+    </section>
+
+    <!-- 23. CHANGES -->
+    <section class="section policy-section" id="changes" aria-labelledby="h-changes">
+      <h2 id="h-changes"><span class="num">23</span>Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time to reflect changes to the app,
+        our practices, or legal requirements. We will update the effective date at the top of
+        this page when changes are made. Material changes may also be communicated within
+        the app.
+      </p>
+    </section>
+
+    <!-- 24. CONTACT -->
+    <section class="section policy-section" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact"><span class="num">24</span>Contact &amp; complaints</h2>
+      <p>
+        If you have questions about this Privacy Policy or how your information is handled,
+        or if you'd like to exercise any of the rights described above, contact us at:
+      </p>
+      <p style="margin-top:0.9rem;">
+        <a class="btn btn-primary" href="mailto:appfinitytechnologies@gmail.com?subject=Gamefinity%20Privacy%20Inquiry">
+          Email appfinitytechnologies@gmail.com
+        </a>
+      </p>
+      <p style="margin-top:1.3rem;">
+        If you are in the EU/EEA/UK, you also have the right to lodge a complaint with your
+        local data protection supervisory authority. If you are in India, complaints may in
+        future be directed to the Data Protection Board of India once the relevant DPDP Act
+        provisions are in force, or to any grievance officer designated by us as required
+        under the DPDP Rules.
+      </p>
+
+      <a class="back-to-top" href="#toc">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 11V3M7 3L3 7M7 3l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to top
+      </a>
+    </section>
+
   </div>
+</main>
 
-  <!-- ══ FOOTER ══ -->
-  <footer class="site-footer">
-    <strong>Gamefinity</strong> &mdash; Privacy Policy
-    <div style="margin-top:6px; color:#64748b;">© 2025 Gamefinity. All rights reserved.</div>
-    <div class="footer-note">
-      This policy is suitable for submission to the Google Play Console, Google AdMob, and hosting on GitHub Pages.<br>
-      Last reviewed: July 20, 2026
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2L29 9V23L16 30L3 23V9L16 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Gamefinity
     </div>
-  </footer>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="YOUR_ACCOUNT_DELETION_PAGE_URL">Account Deletion</a>
+      <a href="#toc">Privacy Policy</a>
+      <a href="mailto:appfinitytechnologies@gmail.com">Contact</a>
+    </nav>
+    <p class="footer-copy">© <span id="year"></span> Gamefinity. All rights reserved.</p>
+  </div>
+</footer>
 
-</div>
+<script>
+/**
+ * Gamefinity — Privacy Policy page
+ * Vanilla JS only. No data collection, no storage.
+ */
+(function () {
+  "use strict";
+
+  /* Smooth scroll for in-page anchor links (TOC, back-to-top) */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+
+      var target = document.querySelector(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      window.setTimeout(function () {
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      }, 350);
+    });
+  });
+
+  /* Footer year */
+  var yearEl = document.getElementById("year");
+  if (yearEl) {
+    yearEl.textContent = String(new Date().getFullYear());
+  }
+})();
+
+</script>
 </body>
 </html>
